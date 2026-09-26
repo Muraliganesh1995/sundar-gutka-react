@@ -31,6 +31,7 @@ const Reader = ({ navigation, route }) => {
   const isEnglishTranslation = useSelector((state) => state.isEnglishTranslation);
   const isPunjabiTranslation = useSelector((state) => state.isPunjabiTranslation);
   const isSpanishTranslation = useSelector((state) => state.isSpanishTranslation);
+  const isTeluguTranslation = useSelector((state) => state.isTeluguTranslation);
   const isParagraphMode = useSelector((state) => state.isParagraphMode);
   const isVishraam = useSelector((state) => state.isVishraam);
   const vishraamOption = useSelector((state) => state.vishraamOption);
@@ -83,6 +84,7 @@ const Reader = ({ navigation, route }) => {
         isEnglishTranslation,
         isPunjabiTranslation,
         isSpanishTranslation,
+        isTeluguTranslation,
         isNightMode,
         isLarivaar,
         currentPosition
@@ -97,6 +99,7 @@ const Reader = ({ navigation, route }) => {
     isEnglishTranslation,
     isPunjabiTranslation,
     isSpanishTranslation,
+    isTeluguTranslation,
     isNightMode,
     isLarivaar,
     currentPosition,
