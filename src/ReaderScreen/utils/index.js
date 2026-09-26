@@ -79,6 +79,7 @@ export const loadHTML = (
   isEnglishTranslation,
   isPunjabiTranslation,
   isSpanishTranslation,
+  isTeluguTranslation,
   isNightMode,
   isLarivaar,
   savePosition
@@ -149,6 +150,18 @@ export const loadHTML = (
         if (isSpanishTranslation) {
           contentHtml += createDiv(
             item.spanishTranslations,
+            item.header,
+            constant.TRANSLATION.toLowerCase(),
+            textAlign,
+            fontSize,
+            isNightMode,
+            isLarivaar
+          );
+        }
+
+        if (isTeluguTranslation) {
+          contentHtml += createDiv(
+            item.teluguTranslations,
             item.header,
             constant.TRANSLATION.toLowerCase(),
             textAlign,
