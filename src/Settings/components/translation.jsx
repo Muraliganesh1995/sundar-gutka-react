@@ -1,105 +1,67 @@
-import React, { useState } from "react";
-import { ListItem, Avatar, Switch } from "@rneui/themed";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { colors, STRINGS } from "@common";
+import { View, Text, Switch } from "react-native";
 import {
   toggleEnglishTranslation,
   togglePunjabiTranslation,
   toggleSpanishTranslation,
-} from "@common/actions";
-import { iconNightColor, styles } from "../styles";
+  toggleTeluguTranslation,
+} from "../../common/actions";
+import { STRINGS, colors, constant } from "@common";
+import styles from "../styles/styles";
+import { nightModeStyles } from "../styles/nightModeStyles";
 
 const TranslationComponent = () => {
-  const translationAvatar = require("../../../images/englishicon.png");
-  const isEnglishTranslation = useSelector((state) => state.isEnglishTranslation);
-  const isSpanishTranslation = useSelector((state) => state.isSpanishTranslation);
-  const isPunjabiTranslation = useSelector((state) => state.isPunjabiTranslation);
-  const isNightMode = useSelector((state) => state.isNightMode);
-
   const dispatch = useDispatch();
-  const [isExpanded, toggleIsExpanded] = useState(false);
-  const nightColor = iconNightColor(isNightMode);
+  const isNightMode = useSelector((state) => state.isNightMode);
+  const isEnglishTranslation = useSelector((state) => state.isEnglishTranslation);
+  const isPunjabiTranslation = useSelector((state) => state.isPunjabiTranslation);
+  const isSpanishTranslation = useSelector((state) => state.isSpanishTranslation);
+  const isTeluguTranslation = useSelector((state) => state.isTeluguTranslation);
+
+  const { titleStyle, row, borderBottom } = styles;
+  const { titleNightStyle, borderBottomNightStyle } = nightModeStyles(isNightMode);
+
   return (
-    <ListItem.Accordion
-      bottomDivider
-      containerStyle={{
-        backgroundColor: isNightMode ? colors.NIGHT_GREY_COLOR : colors.WHITE_COLOR,
-      }}
-      isExpanded={isExpanded}
-      onPress={() => toggleIsExpanded(!isExpanded)}
-      content={
-        <>
-          <Avatar source={translationAvatar} avatarStyle={styles.avatarStyle} />
-          <ListItem.Content>
-            <ListItem.Title
-              style={[{ paddingLeft: 16 }, isNightMode && { color: colors.WHITE_COLOR }]}
-            >
-              {STRINGS.translations}
-            </ListItem.Title>
-          </ListItem.Content>
-        </>
-      }
-      icon={{
-        name: "chevron-down",
-        type: "material-community",
-        color: nightColor,
-        size: 26,
-      }}
-    >
-      <ListItem
-        bottomDivider
-        containerStyle={{
-          backgroundColor: isNightMode ? colors.NIGHT_GREY_COLOR : colors.WHITE_COLOR,
-        }}
-      >
-        <Avatar />
-        <ListItem.Content>
-          <ListItem.Title style={[isNightMode && { color: colors.WHITE_COLOR }]}>
-            {STRINGS.en_translations}
-          </ListItem.Title>
-        </ListItem.Content>
+    <View style={[borderBottom, borderBottomNightStyle]}>
+      <Text style={[titleStyle, titleNightStyle]}>{STRINGS.TRANSLATIONS}</Text>
+      
+      {/* English Switch */}
+      <View style={row}>
+        <Text style={[titleStyle, titleNightStyle]}>{STRINGS.ENGLISH}</Text>
         <Switch
           value={isEnglishTranslation}
-          onValueChange={(value) => dispatch(toggleEnglishTranslation(value))}
+          onValueChange={(val) => dispatch(toggleEnglishTranslation(val))}
         />
-      </ListItem>
+      </View>
 
-      <ListItem
-        bottomDivider
-        containerStyle={{
-          backgroundColor: isNightMode ? colors.NIGHT_GREY_COLOR : colors.WHITE_COLOR,
-        }}
-      >
-        <Avatar />
-        <ListItem.Content>
-          <ListItem.Title style={[isNightMode && { color: colors.WHITE_COLOR }]}>
-            {STRINGS.pu_translations}
-          </ListItem.Title>
-        </ListItem.Content>
+      {/* Punjabi Switch */}
+      <View style={row}>
+        <Text style={[titleStyle, titleNightStyle]}>{constant.PUNJABI}</Text>
         <Switch
           value={isPunjabiTranslation}
-          onValueChange={(value) => dispatch(togglePunjabiTranslation(value))}
+          onValueChange={(val) => dispatch(togglePunjabiTranslation(val))}
         />
-      </ListItem>
+      </View>
 
-      <ListItem
-        bottomDivider
-        containerStyle={{
-          backgroundColor: isNightMode ? colors.NIGHT_GREY_COLOR : colors.WHITE_COLOR,
-        }}
-      >
-        <Avatar />
-        <ListItem.Content>
-          <ListItem.Title style={[isNightMode && { color: colors.WHITE_COLOR }]}>
-            {STRINGS.es_translations}
-          </ListItem.Title>
-        </ListItem.Content>
+      {/* Spanish Switch */}
+      <View style={row}>
+        <Text style={[titleStyle, titleNightStyle]}>{constant.ESPANOL}</Text>
         <Switch
           value={isSpanishTranslation}
-          onValueChange={(value) => dispatch(toggleSpanishTranslation(value))}
+          onValueChange={(val) => dispatch(toggleSpanishTranslation(val))}
         />
-      </ListItem>
-    </ListItem.Accordion>
+      </View>
+
+      {/* Telugu Switch */}
+      <View style={row}>
+        <Text style={[titleStyle, titleNightStyle]}>{constant.TELUGU_UNICODE}</Text>
+        <Switch
+          value={isTeluguTranslation}
+          onValueChange={(val) => dispatch(toggleTeluguTranslation(val))}
+        />
+      </View>
+    </View>
   );
 };
 
