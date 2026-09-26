@@ -90,6 +90,7 @@ export const getShabadFromID = async (
               let englishTranslation = "";
               let punjabiTranslation = "";
               let spanishTranslation = "";
+              let teluguTranslation = "";
 
               for (let i = 0; i < len; i += 1) {
                 const row = results.rows.item(i);
@@ -125,6 +126,7 @@ export const getShabadFromID = async (
                 const English = getTranslation("en", "bdb");
                 const Punjabi = getTranslation("pu", "bdb");
                 const Spanish = getTranslation("es", "sn");
+                const Telugu = getTranslation("te", "bdb");
 
                 // Padched settings for Chopayi Sahib and Rehraas Sahib
                 if (
@@ -152,6 +154,7 @@ export const getShabadFromID = async (
                         englishTranslations: englishTranslation,
                         punjabiTranslations: punjabiTranslation,
                         spanishTranslations: spanishTranslation,
+                        teluguTranslations: teluguTranslation,
                         header: paragraphHeader,
                       });
                     }
@@ -163,6 +166,7 @@ export const getShabadFromID = async (
                     englishTranslation = English;
                     punjabiTranslation = Punjabi;
                     spanishTranslation = Spanish;
+                    teluguTranslation = Telugu;
                     prevParagraph = Paragraph;
                   } else {
                     const space = isLarivar ? "" : " ";
@@ -171,6 +175,7 @@ export const getShabadFromID = async (
                     englishTranslation += ` ${English}`;
                     punjabiTranslation += ` ${Punjabi}`;
                     spanishTranslation += ` ${Spanish}`;
+                    teluguTranslation += ` ${Telugu}`;
                   }
 
                   if (isLastIteration) {
@@ -181,6 +186,7 @@ export const getShabadFromID = async (
                       englishTranslations: englishTranslation,
                       punjabiTranslations: punjabiTranslation,
                       spanishTranslations: spanishTranslation,
+                      teluguTranslations: teluguTranslation,
                       header: paragraphHeader,
                     });
                   }
@@ -192,6 +198,7 @@ export const getShabadFromID = async (
                     englishTranslations: English,
                     punjabiTranslations: Punjabi,
                     spanishTranslations: Spanish,
+                    teluguTranslations: Telugu,
                     header,
                   });
                 }
