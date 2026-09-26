@@ -106,6 +106,10 @@ export const toggleSpanishTranslation = (value) => {
   trackSettingEvent(constant.SPANISH, value);
   return { type: actionTypes.TOGGLE_SPANISH_TRANSLATION, value };
 };
+export const toggleTeluguTranslation = (value) => {
+  trackSettingEvent(constant.TELUGU, value);
+  return { type: actionTypes.TOGGLE_TELUGU_TRANSLATION, value };
+};
 export const setBookmarkPosition = (value) => {
   trackSettingEvent(constant.BOOKMARKS, value);
   return { type: actionTypes.SET_BOOKMARK_POSITION, value };
