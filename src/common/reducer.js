@@ -94,6 +94,10 @@ const isSpanishTranslation = createReducer(false, {
   [actionTypes.TOGGLE_SPANISH_TRANSLATION]: (state, action) => action.value,
 });
 
+const isTeluguTranslation = createReducer(false, {
+  [actionTypes.TOGGLE_TELUGU_TRANSLATION]: (state, action) => action.value,
+});
+
 const isPunjabiTranslation = createReducer(false, {
   [actionTypes.TOGGLE_PUNJABI_TRANSLATION]: (state, action) => action.value,
 });
@@ -188,6 +192,7 @@ const rootReducer = combineReducers({
   isEnglishTranslation,
   isPunjabiTranslation,
   isSpanishTranslation,
+  isTeluguTranslation,
   bookmarkPosition,
   isReminders,
   reminderBanis,
