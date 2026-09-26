@@ -75,6 +75,7 @@ export const createParagraphObject = (
   englishTranslation,
   punjabiTranslation,
   spanishTranslation,
+  teluguTranslation,
   header
 ) => {
   return {
@@ -84,6 +85,7 @@ export const createParagraphObject = (
     englishTranslations: englishTranslation,
     punjabiTranslations: punjabiTranslation,
     spanishTranslations: spanishTranslation,
+    teluguTranslations: teluguTranslation,
     header,
   };
 };
